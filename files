@@ -1,0 +1,47 @@
+Files: Files are used to store data permenantly
+      ofstream-to create new file and write
+      ifstream- to read data from file
+      fstream-to createfile
+
+
+
+
+
+
+
+
+
+ #include <iostream>
+#include<fstream>
+using namespace std;
+
+int main() {
+    ofstream myfile;
+    myfile.open("file.txt",ios::app);// it will append not erase pervious data in file
+    myfile<<"Hello sivakrishnateja";
+    myfile.close();
+  
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include<fstream>
+using namespace std;
+
+int main() {
+    ofstream myfile;
+    myfile.open("file.txt",ios::trunc);// it will erase pervious data in file and add new data, by default trunc was there
+    myfile.open("file.txt");
+    myfile<<"Hello sivakrishnateja";
+    myfile.close();
+  
+    return 0;
+}
