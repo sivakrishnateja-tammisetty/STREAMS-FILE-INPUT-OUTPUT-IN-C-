@@ -5,6 +5,14 @@ Files: Files are used to store data permenantly
 
 
 
+IOSTREAM:
+      input - istream
+      output - ostream
+FILES:
+      input -ifstream
+      output-ofstream
+
+
 
 
 
@@ -45,3 +53,105 @@ int main() {
   
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+// writing square of numbers into file
+#include <iostream>
+#include<fstream>
+using namespace std;
+
+int main() {
+    ofstream myfile;
+    myfile.open("file.txt",ios::app);
+    for(int i=0;i<10;i++)
+    {
+        myfile<<i*i<<endl;
+    }
+    myfile.close();
+  
+    return 0;
+}
+
+
+
+
+
+//READING DATA FROM FILE
+
+#include <iostream>
+#include<fstream>
+using namespace std;
+int main() {
+    ifstream my_file("file.txt");//file should be exist
+    int a;
+    while(!my_file.eof())
+    {
+        my_file>>a;
+        cout<<a<<endl;
+    }
+    my_file.close();
+    return 0;
+}
+
+
+
+
+
+                                                                 FILE I/O ASSIGNMENT
+
+
+
+Write a code to copy contents of one file to another
+
+You can create two siles of your own choice, one should have data of your choice while other is empty.
+
+
+
+
+
+
+#include <iostream>
+#include <fstream>
+
+int main() {
+    // Open the source file for reading
+    std::ifstream sourceFile("source.txt");
+    
+    // Open the destination file for writing
+    std::ofstream destinationFile("destination.txt");
+    
+    // Check if the source file is opened successfully
+    if (!sourceFile.is_open()) {
+        std::cerr << "Error: Unable to open the source file." << std::endl;
+        return 1;
+    }
+    
+    // Check if the destination file is opened successfully
+    if (!destinationFile.is_open()) {
+        std::cerr << "Error: Unable to open the destination file." << std::endl;
+        return 1;
+    }
+    
+    // Copy the contents from the source file to the destination file
+    char c;
+    while (sourceFile.get(c)) {
+        destinationFile.put(c);
+    }
+    
+    // Close the files
+    sourceFile.close();
+    destinationFile.close();
+    
+    std::cout << "File copied successfully." << std::endl;
+    
+    return 0;
+}
+
